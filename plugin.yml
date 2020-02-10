@@ -1,0 +1,7 @@
+name: RPMagic
+main: com.github.boltydawg.Main
+version: 2.0-SNAPSHOT
+author: BoltyDawg
+description: A magical class-based roleplaying system!
+#depend: [Magic]
+#api-version: 1.13

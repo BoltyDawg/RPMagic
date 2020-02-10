@@ -1,0 +1,4 @@
+name: spigot-plugin-simple
+version: 1.0-SNAPSHOT
+author: CoderDojo Ninja
+main: com.github.boltydawg.RPMagic.Main
