@@ -47,7 +47,7 @@ import net.md_5.bungee.api.chat.TextComponent;
  * @author Jason
  *
  */
-public class ListenerRole implements Listener{
+public class RoleListener implements Listener{
 	private HashMap<Player,Player> crooks = new HashMap<Player,Player>();
 	
 	@EventHandler

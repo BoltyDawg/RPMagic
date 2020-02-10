@@ -67,7 +67,7 @@ import io.loyloy.nicky.Nick;
  * I broke it up into sections in an attempt to make it more readable
  * @author BoltyDawg
  */
-public class ListenerClass implements Listener {
+public class MainListener implements Listener {
 	public static final Location HOSPITAL = new Location(RPMagic.instance.getServer().getWorlds().get(0),-24062.0,77,13810.0,180F,90.0F);
 	/**
 	 * Opens up a book gui on the mage's screen containing their spells

@@ -73,7 +73,7 @@ import net.md_5.bungee.api.chat.TextComponent;
  * @author BoltyDawg
  *
  */
-public class ListenerSubclass implements Listener{
+public class SubclassListener implements Listener{
 	private HashMap<Player,Boolean> cool1 = new HashMap<Player,Boolean>();
 	private HashMap<Player,Boolean> cool2 = new HashMap<Player,Boolean>();
 	private HashMap<Player,Location> tele = new HashMap<Player,Location>();

@@ -29,9 +29,9 @@ import com.github.boltydawg.RPMagic.commands.mages.CommandSpellInfo;
 import com.github.boltydawg.RPMagic.commands.mages.CommandTeach;
 import com.github.boltydawg.RPMagic.commands.mages.CommandWand;
 import com.github.boltydawg.RPMagic.listeners.ArmorListener;
-import com.github.boltydawg.RPMagic.listeners.ListenerClass;
-import com.github.boltydawg.RPMagic.listeners.ListenerRole;
-import com.github.boltydawg.RPMagic.listeners.ListenerSubclass;
+import com.github.boltydawg.RPMagic.listeners.MainListener;
+import com.github.boltydawg.RPMagic.listeners.RoleListener;
+import com.github.boltydawg.RPMagic.listeners.SubclassListener;
 import com.github.boltydawg.RPMagic.util.SerUtil;
 import com.nisovin.shopkeepers.api.ShopkeepersPlugin;
 
@@ -102,9 +102,9 @@ public class RPMagic extends JavaPlugin{
 			nick = false;
 		}
 		
-		getServer().getPluginManager().registerEvents(new ListenerClass(), this);
-		getServer().getPluginManager().registerEvents(new ListenerSubclass(), this);
-		getServer().getPluginManager().registerEvents(new ListenerRole(), this);
+		getServer().getPluginManager().registerEvents(new MainListener(), this);
+		getServer().getPluginManager().registerEvents(new SubclassListener(), this);
+		getServer().getPluginManager().registerEvents(new RoleListener(), this);
 		
 		ArrayList<String> block = new ArrayList<String>();
 		block.add(Material.PLAYER_HEAD.name());
@@ -216,7 +216,7 @@ public class RPMagic extends JavaPlugin{
 		int dmg = RPMagic.scoreboard.getObjective("damage").getScore(player.getName()).getScore();
 		if(dmg>=RPMagic.RAGE) {
 			bar.setProgress(1.0);
-			ListenerSubclass.giveRageDrop(player);
+			SubclassListener.giveRageDrop(player);
 		}
 		else if(dmg>=0)
 			bar.setProgress(((double)dmg)/RPMagic.RAGE);
