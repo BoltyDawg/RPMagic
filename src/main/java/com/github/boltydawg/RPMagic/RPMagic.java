@@ -161,15 +161,6 @@ public class RPMagic extends JavaPlugin{
 		SerUtil.loadValues();
 		
 		instance.getLogger().info("RPMagic version " + instance.getDescription().getVersion() + " is now enabled!");
-		
-		new BukkitRunnable() {
-			@Override
-			public void run() {
-				for(Player player : Bukkit.getOnlinePlayers()) {
-					player.setCompassTarget(player.getLocation().add(0,0,-100));
-				}
-			}
-		}.runTaskTimer(this, 30L, 30L);
 	}
 	
 	@Override
