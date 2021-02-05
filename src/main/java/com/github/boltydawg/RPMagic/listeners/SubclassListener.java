@@ -479,7 +479,7 @@ public class SubclassListener implements Listener{
 					ArmorStand as = ((ArmorStand)player.getWorld().spawnEntity(event.getBlockPlaced().getLocation().add(.5,0,.5), EntityType.ARMOR_STAND));
 					as.setCustomName(RPMagic.getName(player)+"'s Waypoint");
 					as.setCustomNameVisible(true);
-					as.setHelmet(new ItemStack(Material.BEACON));
+					as.getEquipment().setHelmet(new ItemStack(Material.BEACON));
 					as.setSmall(true);
 				}
 				else {

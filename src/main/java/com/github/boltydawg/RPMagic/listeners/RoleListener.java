@@ -16,6 +16,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
+import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
@@ -63,7 +64,8 @@ public class RoleListener implements Listener{
 	}
 	@EventHandler
 	public void playerInteract(PlayerInteractEvent event) {
-		if((event.getAction().equals(Action.RIGHT_CLICK_AIR) || (event.getAction().equals(Action.RIGHT_CLICK_BLOCK))) && event.getHand().equals(EquipmentSlot.HAND)){
+		boolean block = event.getAction().equals(Action.RIGHT_CLICK_BLOCK);
+		if( (event.getAction().equals(Action.RIGHT_CLICK_AIR) || block) && event.getHand().equals(EquipmentSlot.HAND) ) {
 			Player player = event.getPlayer();
 			ItemStack item = event.getItem();
 			if(item!=null && item.getType().equals(Material.LEAD) && item.getItemMeta().getLore()!=null && item.getItemMeta().getLore().contains("Justice!")) {
@@ -77,6 +79,10 @@ public class RoleListener implements Listener{
 				}
 				event.setCancelled(true);
 			}
+		}
+		else if (block && event.getClickedBlock().getType().name().contains("WALL_SIGN")) {
+			//Sign sign = (Sign)(event.getClickedBlock().getState());
+			//TODO
 		}
 	}
 	
@@ -148,6 +154,7 @@ public class RoleListener implements Listener{
 			}
 		}
 	}
+	
 	@EventHandler
 	public void clickEntity(PlayerInteractEntityEvent event) {
 		ItemStack item = event.getPlayer().getInventory().getItemInMainHand();
@@ -172,6 +179,7 @@ public class RoleListener implements Listener{
 			event.setCancelled(true);
 		}
 	}
+	
 	@EventHandler
 	public void onPlayerLeave(PlayerQuitEvent event) {
 		if(crooks.containsKey(event.getPlayer())) {
@@ -180,6 +188,7 @@ public class RoleListener implements Listener{
 			crooks.remove(event.getPlayer());
 		}
 	}
+	
 	@EventHandler
 	public void dismount(EntityDismountEvent event) {
 		new BukkitRunnable(){
@@ -193,5 +202,14 @@ public class RoleListener implements Listener{
 	    		}
 	        }
 	   }.runTaskLater(RPMagic.instance, 1L);
+	}
+	
+	@EventHandler
+	public void onSignChange(SignChangeEvent event) {
+		if(event.getPlayer()!=null && event.getLines()[0].equals("!role building")) {
+			//Sign sign = (Sign)(event.getBlock().getState());
+			//TODO: also remove the above line
+			
+		}
 	}
 }
